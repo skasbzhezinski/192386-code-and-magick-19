@@ -26,8 +26,8 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', CLOUD_X + 20, 57);
 
   for (var i = 0; i < names.length; i += 1) {
-    var random = Math.round(Math.random() * 10) / 10;
-    var columnColor = `rgba(255, 0, 0, ${random})`;
+    var randomNum = Math.round(Math.random() * 10) / 10;
+    var columnColor = `rgba(255, 0, 0, ${randomNum})`;
 
     ctx.fillStyle = '#000';
     ctx.fillText(names[i], CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - BOTTOM_GAP);
