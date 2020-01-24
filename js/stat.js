@@ -16,6 +16,17 @@ var renderCloud = function (ctx, x, y, color) {
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
+var getMaxElement = function (arr) {
+  var maxElement = arr[0];
+
+  for (var i = 1; i < arr.length; i++) {
+    if (arr[i] > maxElement) {
+      maxElement = arr[i];
+    }
+  }
+  return maxElement;
+};
+
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + SHADOW_GAP, CLOUD_Y + SHADOW_GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
@@ -39,3 +50,4 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillRect(CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - BAR_HEIGHT - 16 - BOTTOM_GAP, COLUMN_WIDTH, BAR_HEIGHT);
   }
 };
+// columnHeight = times[i] / maxTime * BAR_HEIGHT ;
