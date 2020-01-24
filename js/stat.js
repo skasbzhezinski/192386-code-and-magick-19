@@ -36,9 +36,14 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура вы победили!', CLOUD_X + 20, 36);
   ctx.fillText('Список результатов:', CLOUD_X + 20, 57);
 
+  var maxTime = getMaxElement(times);
+  console.log(maxTime);
+
   for (var i = 0; i < names.length; i += 1) {
     var randomNum = Math.round(Math.random() * 100);
     var columnColor = 'hsl(240, ' + randomNum + '%, 50%)';// 'rgba(0, 0, 255, ' + randomNum + ')';
+    var columnHeight = times[i] / maxTime * BAR_HEIGHT;
+    console.log(columnHeight);
 
     if (names[i] === 'Вы') {
       columnColor = 'rgba(255, 0, 0, 1)';
@@ -47,7 +52,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = '#000';
     ctx.fillText(names[i], CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - BOTTOM_GAP);
     ctx.fillStyle = columnColor; // 'rgba(255, 0, 0, 1)';
-    ctx.fillRect(CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - BAR_HEIGHT - 16 - BOTTOM_GAP, COLUMN_WIDTH, BAR_HEIGHT);
+    ctx.fillRect(CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - columnHeight - 16 - BOTTOM_GAP, COLUMN_WIDTH, columnHeight);
   }
 };
 // columnHeight = times[i] / maxTime * BAR_HEIGHT ;
