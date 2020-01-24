@@ -27,7 +27,11 @@ window.renderStatistics = function (ctx, names, times) {
 
   for (var i = 0; i < names.length; i += 1) {
     var randomNum = Math.round(Math.random() * 10) / 10;
-    var columnColor = `rgba(255, 0, 0, ${randomNum})`;
+    var columnColor = 'rgba(0, 0, 255, ' + randomNum + ')';
+
+    if (names[i] === 'Вы') {
+      columnColor = 'rgba(255, 0, 0, 1)';
+    }
 
     ctx.fillStyle = '#000';
     ctx.fillText(names[i], CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - BOTTOM_GAP);
