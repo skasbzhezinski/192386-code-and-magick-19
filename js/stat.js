@@ -9,6 +9,7 @@ var BAR_HEIGHT = 150; // = maxHeight
 var COLUMN_WIDTH = 40;
 var COLUMN_GAP = 50;
 var BOTTOM_GAP = 20;
+var FONT_SIZE = 16;
 var sectionWidth = COLUMN_GAP + COLUMN_WIDTH;
 
 var renderCloud = function (ctx, x, y, color) {
@@ -50,9 +51,10 @@ window.renderStatistics = function (ctx, names, times) {
     }
 
     ctx.fillStyle = '#000';
+    ctx.fillText(Math.round(times[i]), CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - columnHeight - FONT_SIZE - BOTTOM_GAP - 10);
     ctx.fillText(names[i], CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - BOTTOM_GAP);
     ctx.fillStyle = columnColor; // 'rgba(255, 0, 0, 1)';
-    ctx.fillRect(CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - columnHeight - 16 - BOTTOM_GAP, COLUMN_WIDTH, columnHeight);
+    ctx.fillRect(CLOUD_X + COLUMN_GAP + sectionWidth * i, CLOUD_HEIGHT + CLOUD_Y - columnHeight - FONT_SIZE - BOTTOM_GAP, COLUMN_WIDTH, columnHeight);
   }
 };
 // columnHeight = times[i] / maxTime * BAR_HEIGHT ;
