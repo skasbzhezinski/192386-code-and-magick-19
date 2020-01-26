@@ -23,11 +23,19 @@ var coats = [
   'rgb (0, 0, 0)'
 ];
 
+var getRandomToMax = function (maxNum) {
+  var result = Math.round(Math.random() * 10);
+  if (result <= maxNum - 1 && result >= 1) {
+    return result;
+  }
+  return getRandomToMax(maxNum);
+};
+
 var wizards = [
   {
-    name: WIZARD_NAMES[0],
-    coatColor: 'rgb(241, 43, 107)',
-    eyesColor: 'red'
+    name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
+    coatColor: coats[3],
+    eyesColor: eyes[1],
   },
   {
     name: WIZARD_NAMES[1],
@@ -43,7 +51,7 @@ var wizards = [
     name: WIZARD_NAMES[3],
     coatColor: 'rgb(127, 127, 127)',
     eyesColor: 'green'
-  }
+  },
 ];
 
 
