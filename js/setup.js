@@ -1,7 +1,5 @@
 'use strict';
 
-var WIZARD_NAMES = ['Дамблдор', 'Волдеморт', 'Доктор Стрендж', 'Гарри Поттер'];
-
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
@@ -15,17 +13,17 @@ var names = ['Иван', 'Хуан Себастьян', 'Мария', 'Крис�
 var lastNames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var eyes = ['black', 'red', 'blue', 'yellow', 'green'];
 var coats = [
-  'rgb (101, 137, 164)',
-  'rgb (241, 43, 107)',
-  'rgb (146, 100, 161)',
-  'rgb (56, 159, 117)',
-  'rgb (215, 210, 55)',
-  'rgb (0, 0, 0)'
+  'rgb(101, 137, 164)',
+  'rgb(241, 43, 107)',
+  'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)',
+  'rgb(215, 210, 55)',
+  'rgb(0, 0, 0)'
 ];
 
 var getRandomToMax = function (maxNum) {
   var result = Math.round(Math.random() * 10);
-  if (result <= maxNum - 1 && result >= 1) {
+  if (result >= 0 && result <= maxNum - 1) {
     return result;
   }
   return getRandomToMax(maxNum);
@@ -34,26 +32,25 @@ var getRandomToMax = function (maxNum) {
 var wizards = [
   {
     name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
-    coatColor: coats[3],
-    eyesColor: eyes[1],
+    coatColor: coats[getRandomToMax(coats.length)],
+    eyesColor: eyes[getRandomToMax(eyes.length)]
   },
   {
-    name: WIZARD_NAMES[1],
-    coatColor: 'rgb(215, 210, 55)',
-    eyesColor: 'blue'
+    name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
+    coatColor: coats[getRandomToMax(coats.length)],
+    eyesColor: eyes[getRandomToMax(eyes.length)]
   },
   {
-    name: WIZARD_NAMES[2],
-    coatColor: 'rgb(101, 137, 164)',
-    eyesColor: 'yellow'
+    name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
+    coatColor: coats[getRandomToMax(coats.length)],
+    eyesColor: eyes[getRandomToMax(eyes.length)]
   },
   {
-    name: WIZARD_NAMES[3],
-    coatColor: 'rgb(127, 127, 127)',
-    eyesColor: 'green'
+    name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
+    coatColor: coats[getRandomToMax(coats.length)],
+    eyesColor: eyes[getRandomToMax(eyes.length)]
   },
 ];
-
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -68,6 +65,8 @@ var renderWizard = function (wizard) {
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < wizards.length; i++) {
   fragment.appendChild(renderWizard(wizards[i]));
+  console.log('Плащ ' + getRandomToMax(coats.length));
+  console.log('Цвет плаща ' + wizards.coatColor);
 }
 similarListElement.appendChild(fragment);
 
