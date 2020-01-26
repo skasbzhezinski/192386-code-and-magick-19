@@ -29,28 +29,14 @@ var getRandomToMax = function (maxNum) {
   return getRandomToMax(maxNum);
 };
 
-var wizards = [
-  {
+var wizards = [];
+for (var j = 0; j <= 3; j += 1) {
+  wizards[j] = {
     name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
     coatColor: coats[getRandomToMax(coats.length)],
     eyesColor: eyes[getRandomToMax(eyes.length)]
-  },
-  {
-    name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
-    coatColor: coats[getRandomToMax(coats.length)],
-    eyesColor: eyes[getRandomToMax(eyes.length)]
-  },
-  {
-    name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
-    coatColor: coats[getRandomToMax(coats.length)],
-    eyesColor: eyes[getRandomToMax(eyes.length)]
-  },
-  {
-    name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
-    coatColor: coats[getRandomToMax(coats.length)],
-    eyesColor: eyes[getRandomToMax(eyes.length)]
-  },
-];
+  };
+}
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -62,12 +48,14 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
-  console.log('Плащ ' + getRandomToMax(coats.length));
-  console.log('Цвет плаща ' + wizards.coatColor);
-}
-similarListElement.appendChild(fragment);
+var addElement = function (array, element) {
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < array.length; i++) {
+    fragment.appendChild(renderWizard(array[i]));
+  }
+  return element.appendChild(fragment);
+};
+
+addElement(wizards, similarListElement);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
