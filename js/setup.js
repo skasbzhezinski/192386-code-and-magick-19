@@ -26,16 +26,16 @@ var coats = [
 ];
 
 var getRandomToMax = function (maxNum) {
-  return Math.round(Math.random() * (maxNum - 1));
+  return Math.round(Math.random() * (maxNum));
 };
 
 var generateWizards = function () {
   var wizards = [];
-  for (var j = 0; j <= 3; j++) {
-    wizards[j] = {
-      fullName: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
-      coatColor: coats[getRandomToMax(coats.length)],
-      eyesColor: eyes[getRandomToMax(eyes.length)]
+  for (var i = 0; i < 4; i++) {
+    wizards[i] = {
+      fullName: names[getRandomToMax(names.length - 1)] + ' ' + lastNames[getRandomToMax(lastNames.length - 1)],
+      coatColor: coats[getRandomToMax(coats.length - 1)],
+      eyesColor: eyes[getRandomToMax(eyes.length - 1)]
     };
   }
   return wizards;
