@@ -1,7 +1,11 @@
 'use strict';
 
 var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
+
+var display = function () {
+  userDialog.classList.remove('hidden');
+};
+display();
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
@@ -22,11 +26,7 @@ var coats = [
 ];
 
 var getRandomToMax = function (maxNum) {
-  var result = Math.round(Math.random() * 10);
-  if (result >= 0 && result <= maxNum - 1) {
-    return result;
-  }
-  return getRandomToMax(maxNum);
+  return Math.round(Math.random() * (maxNum - 1));
 };
 
 var wizards = [];
