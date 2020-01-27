@@ -29,14 +29,17 @@ var getRandomToMax = function (maxNum) {
   return Math.round(Math.random() * (maxNum - 1));
 };
 
-var wizards = [];
-for (var j = 0; j <= 3; j += 1) {
-  wizards[j] = {
-    name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
-    coatColor: coats[getRandomToMax(coats.length)],
-    eyesColor: eyes[getRandomToMax(eyes.length)]
-  };
-}
+var generateWizards = function () {
+  var wizards = [];
+  for (var j = 0; j <= 3; j++) {
+    wizards[j] = {
+      name: names[getRandomToMax(names.length)] + ' ' + lastNames[getRandomToMax(lastNames.length)],
+      coatColor: coats[getRandomToMax(coats.length)],
+      eyesColor: eyes[getRandomToMax(eyes.length)]
+    };
+  }
+  return wizards;
+};
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -56,6 +59,6 @@ var addElement = function (array, element) {
   return element.appendChild(fragment);
 };
 
-addElement(wizards, similarListElement);
+addElement(generateWizards(), similarListElement);
 
 reveal(userDialog.querySelector('.setup-similar'));
