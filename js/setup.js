@@ -2,10 +2,10 @@
 
 var userDialog = document.querySelector('.setup');
 
-var display = function () {
-  userDialog.classList.remove('hidden');
+var reveal = function (hiddenElement) {
+  hiddenElement.classList.remove('hidden');
 };
-display();
+reveal(userDialog);
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
@@ -58,4 +58,4 @@ var addElement = function (array, element) {
 
 addElement(wizards, similarListElement);
 
-userDialog.querySelector('.setup-similar').classList.remove('hidden');
+reveal(userDialog.querySelector('.setup-similar'));
