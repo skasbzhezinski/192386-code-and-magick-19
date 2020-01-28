@@ -58,7 +58,7 @@ var addElement = function (array) {
   return fragment;
 };
 
-var displaySettingsWindow = function() {
+var displaySettingsWindow = function () {
   similarListElement.appendChild(addElement(generateWizards()));
   reveal(userDialog);
   reveal(userDialog.querySelector('.setup-similar'));
