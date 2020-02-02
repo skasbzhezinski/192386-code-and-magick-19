@@ -68,12 +68,15 @@ var displaySettingsWindow = function () {
 
 // 8. Учебный проект: одеть Надежду
 
+var ESC_KEY = 'Escape';
+var ENTER_KEY = 'Enter';
+
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 
 var onPopupEscPress = function (evt) {
-  if (evt.key === 'Escape') {
+  if (evt.key === ESC_KEY) {
     closePopup();
   }
 };
@@ -93,7 +96,7 @@ setupOpen.addEventListener('click', function () {
 });
 
 setupOpen.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Enter') {
+  if (evt.key === ENTER_KEY) {
     openPopup();
   }
 });
@@ -103,7 +106,7 @@ setupClose.addEventListener('click', function () {
 });
 
 setupClose.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Enter') {
+  if (evt.key === ENTER_KEY) {
     closePopup();
   }
 });
