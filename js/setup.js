@@ -112,6 +112,6 @@ setupClose.addEventListener('keydown', function (evt) {
 });
 
 // ========= отладка ========= //
-console.log(setup);
-console.log(setupOpen);
-console.log(setupClose);
+// console.log(setup);
+// console.log(setupOpen);
+// console.log(setupClose);
