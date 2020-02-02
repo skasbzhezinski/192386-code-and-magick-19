@@ -82,6 +82,12 @@ setupOpen.addEventListener('click', function () {
   });
 });
 
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    setup.classList.remove('hidden');
+  }
+});
+
 // ========= отладка ========= //
 console.log(setup);
 console.log(setupOpen);
@@ -89,6 +95,13 @@ console.log(setupOpen);
 setupClose.addEventListener('click', function () {
   setup.classList.add('hidden');
 });
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    setup.classList.add('hidden');
+  }
+});
+
 
 // var userNameInput = setup.querySelector('.setup-user-name');
 
