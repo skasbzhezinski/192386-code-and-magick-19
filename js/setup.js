@@ -64,4 +64,20 @@ var displaySettingsWindow = function () {
   reveal(userDialog.querySelector('.setup-similar'));
 };
 
-displaySettingsWindow();
+// displaySettingsWindow();
+
+// 8. Учебный проект: одеть Надежду
+
+var setup = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = setup.querySelector('.setup-close');
+
+setupOpen.addEventListener('click', function () {
+  setup.classList.remove('hidden');
+});
+console.log(setup);
+console.log(setupOpen);
+
+setupClose.addEventListener('click', function () {
+  setup.classList.add('hidden');
+});
