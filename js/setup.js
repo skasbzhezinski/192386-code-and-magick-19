@@ -72,45 +72,42 @@ var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 
-setupOpen.addEventListener('click', function () {
+var openPopup = function () {
   setup.classList.remove('hidden');
 
   document.addEventListener('keydown', function (evt) {
     if (evt.key === 'Escape') {
-      setup.classList.add('hidden');
+      closePopup();
     }
   });
+};
+
+var closePopup = function () {
+  setup.classList.add('hidden');
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
 });
 
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
-    setup.classList.remove('hidden');
+    openPopup();
   }
 });
 
-// ========= отладка ========= //
-console.log(setup);
-console.log(setupOpen);
-
 setupClose.addEventListener('click', function () {
-  setup.classList.add('hidden');
+  closePopup();
 });
 
 setupClose.addEventListener('keydown', function (evt) {
   if (evt.key === 'Enter') {
-    setup.classList.add('hidden');
+    closePopup();
   }
 });
 
 
-// var userNameInput = setup.querySelector('.setup-user-name');
-
-// userNameInput.addEventListener('invalid', function (evt) {
-//   if (userNameInput.validity.tooShort) {
-//     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
-//   } else if (userNameInput.validity.tooLong) {
-//     userNameInput.setCustomValidity('Имя не должно превышать 25-ти символов');
-//   } else if (userNameInput.validity.valueMissing) {
-//     userNameInput.setCustomValidity('Обязательное поле');
-//   }
-// });
+// ========= отладка ========= //
+console.log(setup);
+console.log(setupOpen);
+console.log(setupClose);
