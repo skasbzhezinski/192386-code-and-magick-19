@@ -23,6 +23,7 @@ var coats = [
   'rgb(215, 210, 55)',
   'rgb(0, 0, 0)'
 ];
+var fireball = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 var getRandomToMax = function (maxNum) {
   return Math.floor(Math.random() * (maxNum));
@@ -111,7 +112,25 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
+//
+
+var setupPlayer = document.querySelector('.setup-player');
+var wizardCoat = setupPlayer.querySelector('.wizard-coat');
+var wizardEyes = setupPlayer.querySelector('.wizard-eyes');
+
+var setupFireball = document.querySelector('.setup-fireball-wrap');
+
+wizardCoat.style.fill = coats[1];
+wizardEyes.style.fill = eyes[2];
+
+setupFireball.style.backgroundColor = fireball[0];
+
+
 // ========= отладка ========= //
+console.log(setupPlayer);
+console.log(setupFireball);
+console.log(wizardCoat);
+
 // console.log(setup);
 // console.log(setupOpen);
 // console.log(setupClose);
