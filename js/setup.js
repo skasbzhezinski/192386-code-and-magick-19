@@ -23,7 +23,7 @@ var coats = [
   'rgb(215, 210, 55)',
   'rgb(0, 0, 0)'
 ];
-var fireball = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var fireballs = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 var getRandomToMax = function (maxNum) {
   return Math.floor(Math.random() * (maxNum));
@@ -112,24 +112,48 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-//
-
 var setupPlayer = document.querySelector('.setup-player');
 var wizardCoat = setupPlayer.querySelector('.wizard-coat');
 var wizardEyes = setupPlayer.querySelector('.wizard-eyes');
+var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
 
-var setupFireball = document.querySelector('.setup-fireball-wrap');
+var introducedWizardCoat = setupPlayer.querySelector('input[name="coat-color"]');
+var introducedWizardEyes = setupPlayer.querySelector('input[name="eyes-color"]');
+var introducedSetupFireball = setupPlayer.querySelector('input[name="fireball-color"]');
 
-wizardCoat.style.fill = coats[1];
-wizardEyes.style.fill = eyes[2];
+var currentElement = function (variableArray) {
+  return variableArray[getRandomToMax(variableArray.length)];
+};
 
-setupFireball.style.backgroundColor = fireball[0];
+wizardCoat.addEventListener('click', function () {
+  var current = currentElement(coats);
+  wizardCoat.style.fill = current;
+  introducedWizardCoat.value = current;
+});
 
+wizardEyes.addEventListener('click', function () {
+  var current = currentElement(eyes);
+  wizardEyes.style.fill = current;
+  introducedWizardEyes.value = current;
+});
+
+setupFireball.addEventListener('click', function () {
+  var current = currentElement(fireballs);
+  setupFireball.style.backgroundColor = current;
+  introducedSetupFireball.value = current;
+});
 
 // ========= отладка ========= //
-console.log(setupPlayer);
-console.log(setupFireball);
-console.log(wizardCoat);
+// console.log('introducedWizardCoat');
+// console.log(introducedWizardCoat);
+// console.log('introducedWizardEyes');
+// console.log(introducedWizardEyes);
+// console.log('introducedSetupFireball');
+// console.log(introducedSetupFireball);
+
+// console.log(setupPlayer);
+// console.log(setupFireball);
+// console.log(wizardCoat);
 
 // console.log(setup);
 // console.log(setupOpen);
