@@ -75,6 +75,7 @@ var ENTER_KEY = 'Enter';
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
+var username = setup.querySelector('input[name="username"]');
 
 var onPopupEscPress = function (evt) {
   if (evt.key === ESC_KEY) {
@@ -158,3 +159,5 @@ setupFireball.addEventListener('click', function () {
 // console.log(setup);
 // console.log(setupOpen);
 // console.log(setupClose);
+
+console.log(username);
