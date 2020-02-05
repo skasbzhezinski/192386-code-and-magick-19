@@ -121,6 +121,9 @@ var introducedWizardCoat = setupPlayer.querySelector('input[name="coat-color"]')
 var introducedWizardEyes = setupPlayer.querySelector('input[name="eyes-color"]');
 var introducedSetupFireball = setupPlayer.querySelector('input[name="fireball-color"]');
 
+var setupWizardForm = setup.querySelector('.setup-wizard-form');
+var setupUserName = setup.querySelector('.setup-user-name');
+
 var currentElement = function (variableArray) {
   return variableArray[getRandomToMax(variableArray.length)];
 };
@@ -158,3 +161,6 @@ setupFireball.addEventListener('click', function () {
 // console.log(setup);
 // console.log(setupOpen);
 // console.log(setupClose);
+
+console.log(setupWizardForm);
+console.log(setupUserName);
