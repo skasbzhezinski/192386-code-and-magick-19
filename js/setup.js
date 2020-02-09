@@ -9,8 +9,8 @@ var reveal = function (hiddenElement) {
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
-    .content
-    .querySelector('.setup-similar-item');
+  .content
+  .querySelector('.setup-similar-item');
 
 var names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var lastNames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
@@ -65,7 +65,7 @@ var displaySettingsWindow = function () {
   reveal(userDialog.querySelector('.setup-similar'));
 };
 
-// displaySettingsWindow();
+displaySettingsWindow();
 
 // 8. Учебный проект: одеть Надежду
 
@@ -75,6 +75,8 @@ var ENTER_KEY = 'Enter';
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
+
+var setupUserName = setup.querySelector('.setup-user-name');
 
 var onPopupEscPress = function (evt) {
   if (evt.key === ESC_KEY) {
@@ -102,15 +104,18 @@ setupOpen.addEventListener('keydown', function (evt) {
   }
 });
 
-setupClose.addEventListener('click', function () {
-  closePopup();
-});
-
-setupClose.addEventListener('keydown', function (evt) {
+var onSetupClose = function (evt) {
   if (evt.key === ENTER_KEY) {
     closePopup();
   }
-});
+};
+
+var onSetupCloseByClick = function () {
+  closePopup();
+};
+
+setupClose.addEventListener('click', onSetupCloseByClick);
+setupClose.addEventListener('keydown', onSetupClose);
 
 var setupPlayer = document.querySelector('.setup-player');
 var wizardCoat = setupPlayer.querySelector('.wizard-coat');
@@ -120,9 +125,6 @@ var setupFireball = setupPlayer.querySelector('.setup-fireball-wrap');
 var introducedWizardCoat = setupPlayer.querySelector('input[name="coat-color"]');
 var introducedWizardEyes = setupPlayer.querySelector('input[name="eyes-color"]');
 var introducedSetupFireball = setupPlayer.querySelector('input[name="fireball-color"]');
-
-var setupWizardForm = setup.querySelector('.setup-wizard-form');
-var setupUserName = setup.querySelector('.setup-user-name');
 
 var currentElement = function (variableArray) {
   return variableArray[getRandomToMax(variableArray.length)];
@@ -146,21 +148,12 @@ setupFireball.addEventListener('click', function () {
   introducedSetupFireball.value = current;
 });
 
-// ========= отладка ========= //
-// console.log('introducedWizardCoat');
-// console.log(introducedWizardCoat);
-// console.log('introducedWizardEyes');
-// console.log(introducedWizardEyes);
-// console.log('introducedSetupFireball');
-// console.log(introducedSetupFireball);
+setupUserName.addEventListener('focus', function (event) {
+  event.target.style.background = 'pink';
+  document.removeEventListener('keydown', onPopupEscPress);
+});
 
-// console.log(setupPlayer);
-// console.log(setupFireball);
-// console.log(wizardCoat);
-
-// console.log(setup);
-// console.log(setupOpen);
-// console.log(setupClose);
-
-console.log(setupWizardForm);
-console.log(setupUserName);
+setupUserName.addEventListener('blur', function (event) {
+  event.target.style.background = 'gray';
+  document.addEventListener('keydown', onPopupEscPress);
+});
