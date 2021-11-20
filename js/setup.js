@@ -9,8 +9,8 @@ var reveal = function (hiddenElement) {
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
-    .content
-    .querySelector('.setup-similar-item');
+  .content
+  .querySelector('.setup-similar-item');
 
 var names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var lastNames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
@@ -65,7 +65,7 @@ var displaySettingsWindow = function () {
   reveal(userDialog.querySelector('.setup-similar'));
 };
 
-// displaySettingsWindow();
+displaySettingsWindow();
 
 // 8. Учебный проект: одеть Надежду
 
@@ -76,6 +76,8 @@ var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 var username = setup.querySelector('input[name="username"]');
+
+var setupUserName = setup.querySelector('.setup-user-name');
 
 var onPopupEscPress = function (evt) {
   if (evt.key === ESC_KEY) {
@@ -103,15 +105,18 @@ setupOpen.addEventListener('keydown', function (evt) {
   }
 });
 
-setupClose.addEventListener('click', function () {
-  closePopup();
-});
-
-setupClose.addEventListener('keydown', function (evt) {
+var onSetupClose = function (evt) {
   if (evt.key === ENTER_KEY) {
     closePopup();
   }
-});
+};
+
+var onSetupCloseByClick = function () {
+  closePopup();
+};
+
+setupClose.addEventListener('click', onSetupCloseByClick);
+setupClose.addEventListener('keydown', onSetupClose);
 
 var setupPlayer = document.querySelector('.setup-player');
 var wizardCoat = setupPlayer.querySelector('.wizard-coat');
@@ -144,20 +149,13 @@ setupFireball.addEventListener('click', function () {
   introducedSetupFireball.value = current;
 });
 
-// ========= отладка ========= //
-// console.log('introducedWizardCoat');
-// console.log(introducedWizardCoat);
-// console.log('introducedWizardEyes');
-// console.log(introducedWizardEyes);
-// console.log('introducedSetupFireball');
-// console.log(introducedSetupFireball);
-
-// console.log(setupPlayer);
-// console.log(setupFireball);
-// console.log(wizardCoat);
-
-// console.log(setup);
-// console.log(setupOpen);
-// console.log(setupClose);
-
 console.log(username);
+setupUserName.addEventListener('focus', function (event) {
+  event.target.style.background = 'pink';
+  document.removeEventListener('keydown', onPopupEscPress);
+});
+
+setupUserName.addEventListener('blur', function (event) {
+  event.target.style.background = 'gray';
+  document.addEventListener('keydown', onPopupEscPress);
+});
